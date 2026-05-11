@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Головна — Японський ресторан</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"></head>
+
+<body>
+
+    <header>
+        <h1>Вітаємо у нашому японському ресторані!</h1>
+        <p>Справжній смак Японії у самому серці міста</p>
+    </header>
+
+    <nav>
+        {% if current_user.is_authenticated %}
+        <span>👤 {{ current_user.nickname }}</span> |
+        <a href="/menu">Меню</a> |
+        <a href="/create_order">Кошик</a> |
+        <a href="/logout">Вийти</a>
+        {% else %}
+        <a href="/login">Вхід</a> |
+        <a href="/register">Реєстрація</a> |
+        <a href="/menu">Меню</a> |
+        <a href="/about">Про нас</a>
+        {% endif %}
+    </nav>
+
+    <div class="container">
+        <h2>Що ми пропонуємо</h2>
+        <p>
+            У нашому ресторані ви знайдете традиційні японські страви, приготовані з найсвіжіших інгредієнтів.
+            Ми поєднуємо автентичні рецепти та сучасну подачу, щоб подарувати вам незабутній гастрономічний досвід.
+        </p>
+
+        <h2>Популярні страви</h2>
+
+        <div class="menu-item">
+            <h3>🍣 Суші та роли</h3>
+            <p>Класичні роли, авторські комбінації, сет для компанії — усе, що люблять справжні фанати японської кухні.
+            </p>
+        </div>
+
+        <div class="menu-item">
+            <h3>🍜 Рамен</h3>
+            <p>Ароматний бульйон, ніжна локшина та ідеально підібрані інгредієнти.</p>
+        </div>
+
+        <div class="menu-item">
+            <h3>🔥 Тепанякі</h3>
+            <p>М'ясо, овочі та морепродукти, приготовані на розпеченій плиті прямо перед вами.</p>
+        </div>
+
+        <h2>Чому обирають нас</h2>
+        <ul>
+            <li>Свіжі інгредієнти щодня</li>
+            <li>Професійні японські кухарі</li>
+            <li>Затишна атмосфера</li>
+            <li>Швидка доставка по місту</li>
+        </ul>
+    </div>
+
+    <footer>
+        © 2026 Японський ресторан — Смак, який надихає
+    </footer>
+
+</body>
+
+</html>

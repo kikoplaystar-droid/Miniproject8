@@ -1,0 +1,10 @@
+
+<nav>
+    <a href="{{url_for('menu')}}">Menu</a>
+    <a href="{{url_for('create_order')}}">Create order</a>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</nav>
+
+{%if user and user.nickname == "Admin"%}
+{% include '_admin_navigation.html' %}
+{% endif %}
