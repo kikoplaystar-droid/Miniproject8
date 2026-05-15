@@ -1,0 +1,24 @@
+{% include '_navigation.html' %}
+
+<h1>All Orders</h1>
+
+{% if all_orders %}
+<ul>
+    {% for order in all_orders %}
+    <li>
+        <strong>Order ID:</strong> {{ order.id }} <br>
+        <strong>User ID:</strong> {{ order.user_id }} <br>
+        <strong>Time:</strong> {{ order.order_time }} <br>
+        <strong>Items:</strong>
+        <ul>
+            {% for item_id, data in order.order_list.items() %}
+            <li>{{ data.name }} — {{ data.count }} шт.</li>
+            {% endfor %}
+        </ul>
+        <hr>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No orders yet.</p>
+{% endif %} 

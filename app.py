@@ -17,6 +17,8 @@ import os
 
 from database import Session, Users, Menu, Orders, Reservation
 
+import uuid
+
 
 dotenv.load_dotenv()
 
@@ -341,6 +343,27 @@ def menu_check():
     with Session() as cursor:
         all_positions = cursor.query(Menu).all()
     return render_template('menu_check.html', all_positions=all_positions, csrf_token=session["csrf_token"], user=current_user)
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html', user=current_user)
+
+
+@app.route('/orders_check')
+@login_required
+def orders_check():
+    if current_user.nickname != "Admin":
+        return redirect(url_for("home"))
+
+    with Session() as cursor:
+        all_orders = cursor.query(Orders).all()
+
+    return render_template(
+        "orders_check.html",
+        all_orders=all_orders,
+        user=current_user
+    )
 
 
 @app.route('/all_users')
