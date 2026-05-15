@@ -3,11 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ position.name }} — Sushi‑Manga</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"></head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
 
 <body>
+
     {% include '_navigation.html' %}
 
     {% with messages = get_flashed_messages() %}
@@ -18,18 +20,28 @@
     {% endif %}
     {% endwith %}
 
-    <img src="/static/menu/{{position.file_name}}">
-    <p>{{position.name}} ({{position.weight}}гр)</p>
-    <small>{{position.ingredients}}</small>
-    <p>Опис:</p>
-    <pre>{{position.description}}</pre>
-    <p>{{position.price}} грн</p>
-    <form method="post">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
-        <input type="hidden" name="name" value="{{position.name}}">
-        <input type="number" name="num">
-        <input type="submit" value="Додати">
-    </form>
-</body>
+    <div class="position-container">
 
-</html>
+        <img class="position-img" src="/static/menu/{{ position.file_name }}" alt="{{ position.name }}">
+
+        <h2 class="position-title">{{ position.name }} ({{ position.weight }} g)</h2>
+
+        <p class="position-ingredients">{{ position.ingredients }}</p>
+
+        <h3>Description:</h3>
+        <pre class="position-description">{{ position.description }}</pre>
+
+        <p class="position-price">{{ position.price }} UAH</p>
+
+        <form method="post" class="position-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <input type="hidden" name="name" value="{{ position.name }}">
+
+            <input type="number" name="num" placeholder="Quantity" min="1" required>
+
+            <button type="submit" class="add-btn">Add to Cart</button>
+        </form>
+
+    </div>
+
+</body>

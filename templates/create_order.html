@@ -3,26 +3,40 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create Order — Sushi‑Manga</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"></head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
 
 <body>
-    {% include '_admin_navigation.html' %}
-    {%if basket%}
-    <ul>
-        {%for position in basket%}
-        <li>{{position}} , к-сть: {{basket[position]}}</li>
-        {%endfor%}
-    </ul>
-    <form method="post">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
-        <input type="submit" value="Оформити замволення">
 
-    </form>
-    {%else%}
-    <h1>Ваш список замовлень пустий</h1>
-    {%endif%}
+    {% include '_admin_navigation.html' %}
+
+    <div class="order-container">
+
+        {% if basket %}
+        <h2>Your Order</h2>
+
+        <ul class="order-list">
+            {% for position in basket %}
+            <li>
+                <span class="item-name">{{ position }}</span>
+                <span class="item-qty">Qty: {{ basket[position] }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <form method="post" class="order-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <button type="submit" class="order-btn">Place Order</button>
+        </form>
+
+        {% else %}
+        <h1 class="empty-order">Your order list is empty</h1>
+        {% endif %}
+
+    </div>
+
 </body>
 
 </html>

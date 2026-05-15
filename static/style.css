@@ -1,48 +1,468 @@
+/* ====== BASE ====== */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    background: #f7f7f7;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #0b0b0b;
+    color: #ffffff;
 }
 
-header {
-    background: #d62828;
-    padding: 20px;
-    color: white;
-    text-align: center;
-}
-
-nav {
-    text-align: center;
-    margin-top: 10px;
-}
-
-nav a {
-    color: #d62828;
+a {
+    color: inherit;
     text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
 }
 
-.container {
-    max-width: 900px;
-    margin: 30px auto;
+/* ====== HERO SECTION ====== */
+.hero {
+    background: url('/static/bg.jpg') center/cover no-repeat, #000;
+    padding: 120px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 64px;
+    margin: 0;
+    color: #e60012;
+    text-shadow: 0 0 20px #e60012;
+    font-weight: 900;
+}
+
+.hero p {
+    font-size: 22px;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+.hero-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 28px;
+    background: #e60012;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: 0.25s;
+}
+
+.hero-btn:hover {
+    background: #ff2a2a;
+    box-shadow: 0 0 15px #e60012;
+}
+
+/* ====== FEATURES SECTION ====== */
+.features {
+    max-width: 1000px;
+    margin: 60px auto;
     padding: 20px;
-    background: white;
-    border-radius: 10px;
 }
 
-.menu-item {
+.features h2 {
+    color: #e60012;
+    border-left: 5px solid #e60012;
+    padding-left: 12px;
+    font-size: 32px;
+}
+
+.feature-grid {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    flex: 1;
+    min-width: 260px;
+    background: #141414;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #222;
+    transition: 0.25s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(230, 0, 18, 0.35);
+}
+
+.feature-card .emoji {
+    font-size: 40px;
+}
+
+/* ====== MENU PAGE ====== */
+.menu-container {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+.menu-container h2 {
+    color: #e60012;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.menu-card {
+    background: #141414;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid #1f1f1f;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.15);
+    text-align: center;
+    transition: 0.25s;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(230, 0, 18, 0.35);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.menu-card h3 {
+    color: #ff4d4d;
+    margin-bottom: 10px;
+}
+
+.menu-card .ingredients {
+    color: #ccc;
+    font-size: 15px;
     margin-bottom: 20px;
 }
 
-.menu-item h3 {
-    margin: 0;
-    color: #d62828;
+.menu-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #e60012;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.25s;
 }
 
-footer {
+.menu-btn:hover {
+    background: #ff2a2a;
+    box-shadow: 0 0 12px #e60012;
+}
+
+/* ====== POSITION DETAILS ====== */
+.position-container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #141414;
+    border-radius: 14px;
+    border: 1px solid #1f1f1f;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.15);
     text-align: center;
+}
+
+.position-img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.position-title {
+    color: #e60012;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.position-ingredients {
+    color: #ccc;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.position-description {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #222;
+    white-space: pre-wrap;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.position-price {
+    font-size: 24px;
+    color: #ff4d4d;
+    margin-bottom: 25px;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 14px;
+    background: #e60012;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.add-btn:hover {
+    background: #ff2a2a;
+    box-shadow: 0 0 15px #e60012;
+}
+
+/* ====== FORM CONTAINER (Login/Register/Reservation) ====== */
+.form-container {
+    max-width: 450px;
+    margin: 80px auto;
+    padding: 35px;
+    background: #141414;
+    border-radius: 14px;
+    border: 1px solid #1f1f1f;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.15);
+    text-align: center;
+}
+
+.form-container h2 {
+    color: #e60012;
+    margin-bottom: 25px;
+    font-size: 32px;
+}
+
+form input,
+form textarea,
+select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #1a1a1a;
+    color: white;
+    font-size: 16px;
+    transition: 0.25s;
+}
+
+form input:focus,
+form textarea:focus,
+select:focus {
+    border-color: #e60012;
+    box-shadow: 0 0 10px rgba(230, 0, 18, 0.4);
+    outline: none;
+}
+
+form button {
+    width: 100%;
+    padding: 14px;
+    background: #e60012;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+form button:hover {
+    background: #ff2a2a;
+    box-shadow: 0 0 15px #e60012;
+}
+
+.form-link {
+    display: block;
+    margin-top: 15px;
+    color: #e60012;
+    font-size: 16px;
+}
+
+/* ====== ALERTS ====== */
+.alert {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.alert-danger {
+    background: #7a0000;
+    color: #ffb3b3;
+}
+
+.alert-success {
+    background: #004d00;
+    color: #b3ffb3;
+}
+
+/* ====== ADMIN TABLES ====== */
+.admin-container {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #141414;
+    border-radius: 14px;
+    border: 1px solid #1f1f1f;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.15);
+}
+
+.admin-container h2 {
+    color: #e60012;
+    margin-bottom: 25px;
+    font-size: 32px;
+    text-align: center;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.admin-table th {
+    background: #e60012;
+    padding: 14px;
+    font-size: 18px;
+    color: white;
+    text-align: left;
+}
+
+.admin-table td {
+    padding: 14px;
+    border-bottom: 1px solid #333;
+    color: #ddd;
+}
+
+.admin-table tr:hover {
+    background: #222;
+    transition: 0.2s;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-status {
+    padding: 8px 14px;
+    background: #0066ff;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-status:hover {
+    background: #1a80ff;
+    box-shadow: 0 0 10px #1a80ff;
+}
+
+.btn-delete {
+    padding: 8px 14px;
+    background: #b30000;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background: #ff1a1a;
+    box-shadow: 0 0 10px #ff1a1a;
+}
+
+/* ====== ORDER PAGES ====== */
+.order-container {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #141414;
+    border-radius: 14px;
+    border: 1px solid #1f1f1f;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.15);
+    text-align: center;
+}
+
+.order-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.order-list li {
+    background: #1a1a1a;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid #222;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.cancel-btn {
+    width: 100%;
+    padding: 14px;
+    background: #b30000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    background: #ff1a1a;
+    box-shadow: 0 0 15px #ff1a1a;
+}
+
+/* ====== MY ORDERS ====== */
+.order-card {
+    background: #141414;
+    border: 1px solid #1f1f1f;
+    border-radius: 14px;
     padding: 20px;
-    margin-top: 40px;
-    background: #eee;
+    margin-bottom: 25px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.15);
+}
+
+.order-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #e60012;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.order-btn:hover {
+    background: #ff2a2a;
+    box-shadow: 0 0 12px #e60012;
 }

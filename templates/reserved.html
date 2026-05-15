@@ -1,32 +1,39 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Бронювання столика</title>
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>Table Reservation — Sushi‑Manga</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 
 <body>
+
     {% include '_admin_navigation.html' %}
-    <h2>Бронювання столика</h2>
 
-    <form method="post">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <div class="form-container">
+        <h2>Table Reservation</h2>
 
-        <p>Оберіть тип столика</p>
-        <select name="table_type">
-            <option value="1-2">1-2 людини</option>
-            <option value="3-4">3-4 людини</option>
-            <option value="4+">Більше 4-х людей</option>
-        </select>
-        <input type="datetime-local" name="time" required>
+        <form method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
+            <p>Select table type</p>
+            <select name="table_type" class="select-input">
+                <option value="1-2">1–2 people</option>
+                <option value="3-4">3–4 people</option>
+                <option value="4+">More than 4 people</option>
+            </select>
 
-        <button type="submit">Забронювати</button>
-    </form>
-    <h3>{{message}}</h3>
+            <input type="datetime-local" name="time" required>
 
+            <button type="submit">Reserve</button>
+        </form>
+
+        {% if message %}
+        <h3 class="reservation-message">{{ message }}</h3>
+        {% endif %}
+    </div>
 
 </body>
 

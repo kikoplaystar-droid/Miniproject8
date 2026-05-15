@@ -3,30 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add New Item — Sushi‑Manga</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"></head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
 
 <body>
+
     {% include '_navigation.html' %}
-    <h2>Додавання нової позиції</h2>
-    <form method="post" enctype="multipart/form-data">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
-        <input type="text" name="name" placeholder="Назва позиції" required>
+    <div class="form-container">
+        <h2>Add New Menu Item</h2>
 
-        <input type="file" name="img" accept="image/*" required>
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
-        <textarea name="ingredients" placeholder="Інгредієнти" required></textarea>
+            <input type="text" name="name" placeholder="Item Name" required>
 
-        <textarea name="description" placeholder="Опис" required></textarea>
+            <input type="file" name="img" accept="image/*" required>
 
-        <input type="number" name="price" placeholder="Ціна (грн)" required>
+            <textarea name="ingredients" placeholder="Ingredients" required></textarea>
 
-        <input type="number" name="weight" placeholder="Вага (г)" required>
+            <textarea name="description" placeholder="Description" required></textarea>
 
-        <button type="submit">Додати товар</button>
-    </form>
+            <input type="number" name="price" placeholder="Price (UAH)" required>
+
+            <input type="number" name="weight" placeholder="Weight (g)" required>
+
+            <button type="submit">Add Item</button>
+        </form>
+    </div>
+
 </body>
-
-</html>

@@ -1,24 +1,37 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Головне меню</title>
+    <title>Main Menu — Sushi‑Manga</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"></head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
 
 <body>
+
     {% include '_navigation.html' %}
-    <h2>Наше меню</h2>
-    {% for position in all_positions %}
-    <div>
-        <img src="/static/menu/{{ position.file_name }}" alt="{{ position.name }}" width="200">
-        <h3>{{ position.name }}</h3>
-        <p>{{ position.ingredients }}</p>
-        <button><a href="/position/{{ position.name }}">Оглянути детальніше</a></button>
+
+    <div class="menu-container">
+        <h2>Our Menu</h2>
+
+        <div class="menu-grid">
+            {% for position in all_positions %}
+            <div class="menu-card">
+                <img src="/static/menu/{{ position.file_name }}" alt="{{ position.name }}">
+
+                <h3>{{ position.name }}</h3>
+
+                <p class="ingredients">{{ position.ingredients }}</p>
+
+                <a class="menu-btn" href="/position/{{ position.name }}">
+                    View Details
+                </a>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-    <hr>
-    {% endfor %}
+
 </body>
 
 </html>

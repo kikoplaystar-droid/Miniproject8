@@ -1,28 +1,37 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Усі користувачі</title>
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"></head>
+    <title>All Users — Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
 
 <body>
+
     {% include '_admin_navigation.html' %}
-    <h2>Користувачі</h2>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Нікнейм</th>
-            <th>Email</th>
-        </tr>
-        {% for user in all_users %}
-        <tr>
-            <td>{{ user.id }}</td>
-            <td>{{ user.nickname }}</td>
-            <td>{{ user.email }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+
+    <div class="admin-container">
+        <h2>All Registered Users</h2>
+
+        <table class="admin-table">
+            <tr>
+                <th>ID</th>
+                <th>Nickname</th>
+                <th>Email</th>
+            </tr>
+
+            {% for user in all_users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nickname }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
 </body>
 
 </html>

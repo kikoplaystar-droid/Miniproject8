@@ -1,26 +1,41 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Деталі замовлення</title>
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"></head>
+    <title>Order Details — Sushi‑Manga</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
 
 <body>
-    {% include '_navigation.html' %}
-    <h2>Ваше замовлення №{{ order.id }}</h2>
-    <p>Перелік позицій:</p>
-    <ul>
-        {% for id, data in order.order_list.items() %}
-        <li>{{ data['name'] }} — кількість: {{ data['count'] }}</li>
-        {% endfor %}
-    </ul>
-    <p><strong>Дата та час:</strong> {{ order.get_time() }}</p>
-    <p><strong>Загальна сума:</strong> {{ total_price }} грн</p>
 
-    <form method="post" action="/cancel_order/{{ order.id }}">
-        <button type="submit">Скасувати замовлення</button>
-    </form>
+    {% include '_navigation.html' %}
+
+    <div class="order-container">
+
+        <h2>Your Order #{{ order.id }}</h2>
+
+        <p class="order-subtitle">Order items:</p>
+
+        <ul class="order-list">
+            {% for id, data in order.order_list.items() %}
+            <li>
+                <span class="item-name">{{ data['name'] }}</span>
+                <span class="item-qty">Qty: {{ data['count'] }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <p><strong>Date & Time:</strong> {{ order.get_time() }}</p>
+        <p><strong>Total Price:</strong> {{ total_price }} UAH</p>
+
+        <form method="post" action="/cancel_order/{{ order.id }}">
+            <button type="submit" class="cancel-btn">Cancel Order</button>
+        </form>
+
+    </div>
+
 </body>
 
-</html> 
+</html>

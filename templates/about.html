@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>About Us — Sushi‑Manga</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body>
+
+    {% include '_navigation.html' %}
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>About Sushi‑Manga</h1>
+            <p>Where Japanese cuisine meets manga culture</p>
+        </div>
+    </header>
+
+    <section class="features">
+        <h2>Our Story</h2>
+        <p>
+            Sushi‑Manga was created with one idea in mind — to combine the authentic taste of Japanese cuisine
+            with the cozy and creative atmosphere of manga cafés.
+            We believe food should not only taste great but also inspire.
+        </p>
+
+        <p>
+            Our chefs prepare every dish using fresh, high‑quality ingredients, while our interior and concept
+            bring the world of manga to life. Whether you're here for a quick lunch, a relaxing dinner,
+            or to enjoy your favorite manga — Sushi‑Manga is the perfect place.
+        </p>
+
+        <h2>What Makes Us Special</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <span class="emoji">🍣</span>
+                <h3>Authentic Taste</h3>
+                <p>Traditional Japanese recipes prepared with passion and precision.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="emoji">📚</span>
+                <h3>Manga Atmosphere</h3>
+                <p>A cozy space inspired by Japanese manga cafés.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="emoji">🚀</span>
+                <h3>Fast Delivery</h3>
+                <p>Enjoy your favorite dishes at home with quick and reliable delivery.</p>
+            </div>
+        </div>
+
+        <h2>Our Mission</h2>
+        <p>
+            To bring people together through food, creativity, and culture.
+            Sushi‑Manga is more than a restaurant — it's an experience.
+        </p>
+    </section>
+
+    <footer>
+        © 2026 Sushi‑Manga — Taste that inspires
+    </footer>
+
+</body>
+
+</html>

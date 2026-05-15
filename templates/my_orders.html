@@ -1,18 +1,36 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Мої замовлення</title>
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"></head>
+    <title>My Orders — Sushi‑Manga</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
 
 <body>
+
     {% include '_navigation.html' %}
-    <h2>Ваші замовлення</h2>
-    {% for order in us_orders %}
-    <p>Замовлення №{{ order.id }} від {{ order.get_time() }}</p>
-    <button><a href="/my_order/{{ order.id }}">Переглянути деталі</a></button>
-    {% endfor %}
+
+    <div class="orders-container">
+        <h2>Your Orders</h2>
+
+        {% if us_orders %}
+        {% for order in us_orders %}
+        <div class="order-card">
+            <p class="order-title">Order #{{ order.id }}</p>
+            <p class="order-date">Date: {{ order.get_time() }}</p>
+
+            <a class="order-btn" href="/my_order/{{ order.id }}">
+                View Details
+            </a>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h3 class="empty-orders">You have no orders yet</h3>
+        {% endif %}
+    </div>
+
 </body>
 
 </html>
