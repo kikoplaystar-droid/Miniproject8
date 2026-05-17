@@ -1,24 +1,51 @@
-{% include '_navigation.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-<h1>All Orders</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Orders</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
 
-{% if all_orders %}
-<ul>
-    {% for order in all_orders %}
-    <li>
-        <strong>Order ID:</strong> {{ order.id }} <br>
-        <strong>User ID:</strong> {{ order.user_id }} <br>
-        <strong>Time:</strong> {{ order.order_time }} <br>
-        <strong>Items:</strong>
-        <ul>
-            {% for item_id, data in order.order_list.items() %}
-            <li>{{ data.name }} — {{ data.count }} шт.</li>
+<body>
+
+    {% include '_navigation.html' %}
+
+    <div class="admin-container">
+        <h2>All Orders</h2>
+
+        {% if all_orders %}
+        <table class="admin-table">
+            <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Time</th>
+                <th>Items</th>
+            </tr>
+
+            {% for order in all_orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.user_id }}</td>
+                <td>{{ order.order_time }}</td>
+                <td>
+                    <ul class="order-list">
+                        {% for item_id, data in order.order_list.items() %}
+                        <li>{{ data.name }} — {{ data.count }} шт.</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
             {% endfor %}
-        </ul>
-        <hr>
-    </li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No orders yet.</p>
-{% endif %} 
+        </table>
+
+        {% else %}
+        <p style="text-align:center; font-size:20px; margin-top:20px;">No orders yet.</p>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>

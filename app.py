@@ -182,13 +182,15 @@ def position(name):
         if request.form.get("csrf_token") != session["csrf_token"]:
             return "Запит заблоковано!", 403
 
-        position_num = request.form.get("num")
+        position_num = int(request.form.get("num"))
         if "basket" not in session:
             basket = {}
         else:
             basket = session.get("basket")
-        basket[us_position.id] = {
-            "name": us_position.name, "count": position_num}
+        basket[str(us_position.id)] = {
+            "name": us_position.name,
+            "count": int(position_num)
+        }
         session["basket"] = basket
         flash("Позицію додано у кошик!")
 
@@ -232,7 +234,7 @@ def my_order(id):
         us_order = cursor.query(Orders).filter_by(id=id).first()
         total_price = sum(
             int(cursor.query(Menu).filter_by(
-                id=i).first().price) * int(data["count"])
+                id=int(i)).first().price) * int(data["count"])
             for i, data in us_order.order_list.items()
         )
     return render_template("my_order.html", order=us_order, total_price=total_price, user=current_user)

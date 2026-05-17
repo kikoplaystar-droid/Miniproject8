@@ -1,10 +1,11 @@
-<nav>
+<nav class="nav">
     <a href="{{ url_for('home') }}">Home</a>
     <a href="{{ url_for('menu') }}">Menu</a>
     <a href="{{ url_for('create_order') }}">Create order</a>
 
     {% if current_user.is_authenticated %}
     <a href="{{ url_for('my_orders') }}">My orders</a>
+    <a href="{{ url_for('reserved') }}">Reserve</a>
     <a href="{{ url_for('about') }}">About</a>
     <a href="{{ url_for('logout') }}">Logout</a>
     {% else %}

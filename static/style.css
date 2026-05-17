@@ -466,3 +466,40 @@ form button:hover {
     background: #ff2a2a;
     box-shadow: 0 0 12px #e60012;
 }
+
+/* ====== NAVIGATION ====== */
+.nav {
+    display: flex;
+    gap: 20px;
+    padding: 18px 30px;
+    background: #111;
+    border-bottom: 2px solid #e60012;
+    box-shadow: 0 0 15px rgba(230, 0, 18, 0.25);
+}
+
+.nav a {
+    color: #fff;
+    font-size: 18px;
+    transition: 0.25s;
+}
+
+.nav a:hover {
+    color: #e60012;
+    text-shadow: 0 0 8px #e60012;
+}
+
+/* ====== ADMIN NAVIGATION ====== */
+.admin-nav {
+    background: #1a1a1a;
+    border-bottom: 2px solid #444;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.15);
+}
+
+.admin-nav a {
+    color: #ff4d4d;
+}
+
+.admin-nav a:hover {
+    color: #ff7777;
+    text-shadow: 0 0 8px #ff4d4d;
+}
